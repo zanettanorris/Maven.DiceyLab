@@ -1,17 +1,22 @@
 import java.util.HashMap;
 
-public class Bins {
+public class Bins extends Dice {
     private HashMap<Integer, Integer> B = new HashMap<>();
-    Integer inc = 0;
+    Integer n;
 
-    public Bins(Integer numberOfDice) {
-        for (int i = 2; i <= numberOfDice * 6; i++) {
+    public int getNumberOfDice(){
+        return n;
+    }
+    public Bins(Integer n) {
+       for (int i = n; i <= (n+(n*5)); i++)
             B.put(i, 0);
         }
-    }
 
-    public void incrementBin(Integer inc) {
-        B.put(inc, B.get(inc + 1));
+
+    public Integer incrementBin(Integer binNumber) {
+        Integer inc = 1;
+        B.put((inc = inc++ ), B.get(inc));
+        return inc;
     }
 
     public Integer getBin(Integer binNumber) {

@@ -5,9 +5,11 @@ public class Simulation {
     private Integer numberOfRolls;
     private Bins bin;
     private Dice dice;
+    private Integer numberOfOutcomes;
+
 
     public Simulation(Integer numberOfDice, Integer numberOfRolls) {
-
+        this.numberOfOutcomes = numberOfOutcomes;
         this.numberOfDice = numberOfDice;
         this.numberOfRolls = numberOfRolls;
         this.bin = new Bins(numberOfDice);
@@ -34,14 +36,14 @@ public class Simulation {
 
         }
     }
-
-    public Float calcPercent(Integer sumOfRoll, Integer numberOfRolls) {
-        Float percentValue = (float) sumOfRoll / numberOfRolls * 100;
+//TODO should be total number of rolls of that number, not sumOfRoll;
+    public static Float calcPercent(Integer inc, Integer numberOfRolls) {
+        Float percentValue = (float) inc / numberOfRolls * 100;
         return percentValue;
 
     }
 
-    public String printStars(Integer numberOfStars) {
+    public static String printStars(Integer numberOfStars) {
         String rowOfStars = "";
         for (int i = 0; i < numberOfStars; i++) {
             rowOfStars += "*";
