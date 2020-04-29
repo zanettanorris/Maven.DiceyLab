@@ -5,11 +5,11 @@ public class Simulation {
     private Integer numberOfRolls;
     private Bins bin;
     private Dice dice;
-    private Integer numberOfOutcomes;
+    private Integer highestPossibleOutcome;
 
 
     public Simulation(Integer numberOfDice, Integer numberOfRolls) {
-        this.numberOfOutcomes = numberOfOutcomes;
+        this.highestPossibleOutcome = highestPossibleOutcome;
         this.numberOfDice = numberOfDice;
         this.numberOfRolls = numberOfRolls;
         this.bin = new Bins(numberOfDice);
@@ -31,19 +31,27 @@ public class Simulation {
         for (Integer keySum : results.keySet()) {
             percent = calcPercent(bin.getBin(keySum), numberOfRolls);
             int rowOfStars;
-            rowOfStars = 0b1;
-            System.out.println(keySum + "  :   " + Math.round(bin.getBin(keySum)) + " :  " + Math.round(percent) + "  " + printStars(rowOfStars));
+//            rowOfStars = 0b1;
+
+            System.out.println((String.format("%2d",keySum)) + "  :   " + (String.format("%6d",
+                    Math.round(bin.getBin(keySum)))) + " :  " + (String.format("%2d",Math.round(percent))) +
+                    " " +
+                    " " + printStars(Math.round(percent)));
 
         }
     }
 //TODO should be total number of rolls of that number, not sumOfRoll;
-    public static Float calcPercent(Integer inc, Integer numberOfRolls) {
-        Float percentValue = (float) inc / numberOfRolls * 100;
+    public Float calcPercent(Integer inc, Integer numberOfRolls) {
+        HashMap<Integer, Integer> results = bin.getB();
+        Float percentValue = 0f;
+        for (Integer keySum : results.keySet()) {
+             percentValue = (float) (inc) / numberOfRolls * 100;
+        }
         return percentValue;
 
     }
-
-    public static String printStars(Integer numberOfStars) {
+    
+    public String printStars(Integer numberOfStars) {
         String rowOfStars = "";
         for (int i = 0; i < numberOfStars; i++) {
             rowOfStars += "*";

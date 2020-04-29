@@ -5,9 +5,10 @@ public class BinsTest {
 
     @Test
     public void getBinTest() {
-     Bins testBin = new Bins (11);
+     Bins testBin = new Bins (2);
      testBin.incrementBin(10);
      Integer expected = 1;
+//   Integer actual = testBin.getBin(10);
      Integer actual = testBin.getBin(10);
      Assert.assertEquals(expected, actual);
 

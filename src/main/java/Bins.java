@@ -2,26 +2,35 @@ import java.util.HashMap;
 
 public class Bins extends Dice {
     private HashMap<Integer, Integer> B = new HashMap<>();
-    Integer n;
+    Integer numberOfDice;
 
     public int getNumberOfDice(){
-        return n;
+        return numberOfDice;
     }
-    public Bins(Integer n) {
-       for (int i = n; i <= (n+(n*5)); i++)
+
+    public Bins(Integer numberOfDice) {
+       for (int i = numberOfDice; i <= (numberOfDice*6); i++)
             B.put(i, 0);
-        }
+    }
+//
+//    public Integer incrementBin(Integer binNumber) {
+//        Integer inc = 1;
+//        B.put(( inc = inc++ ),
+//                B.get(inc));
+//        return inc;
+//    }
 
+    public void incrementBin(Integer binNumber){
+        Integer oldValue = B.get(binNumber);
+        Integer newValue = oldValue + 1 ;
+        B.put(binNumber, newValue);
 
-    public Integer incrementBin(Integer binNumber) {
-        Integer inc = 1;
-        B.put((inc = inc++ ), B.get(inc));
-        return inc;
     }
 
     public Integer getBin(Integer binNumber) {
         return B.get(binNumber);
     }
+
     public HashMap <Integer, Integer>  getB(){
         return B;
     }
