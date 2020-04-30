@@ -26,21 +26,25 @@ public class Simulation {
     }
 
     public void printResults() {
+        System.out.println("*** \r\n" +
+                "Simulation of " + numberOfDice + " dice tossed for " + numberOfRolls + " times.\r\n" +
+                "***\r\n");
         HashMap<Integer, Integer> results = bin.getB();
         Float percent;
         for (Integer keySum : results.keySet()) {
             percent = calcPercent(bin.getBin(keySum), numberOfRolls);
             int rowOfStars;
 //            rowOfStars = 0b1;
-
+//TODO make the percent yield a decimal rather than a whole number. 0.17 instead of 17.
+//            int roundPercent = Math.round(percent);
+//            float decimalPercent = (roundPercent/100);
             System.out.println((String.format("%2d",keySum)) + "  :   " + (String.format("%6d",
-                    Math.round(bin.getBin(keySum)))) + " :  " + (String.format("%2d",Math.round(percent))) +
+                    Math.round(bin.getBin(keySum)))) + " :  " + (String.format("%2d", Math.round(percent))) +
                     " " +
                     " " + printStars(Math.round(percent)));
-
         }
     }
-//TODO should be total number of rolls of that number, not sumOfRoll;
+
     public Float calcPercent(Integer inc, Integer numberOfRolls) {
         HashMap<Integer, Integer> results = bin.getB();
         Float percentValue = 0f;
