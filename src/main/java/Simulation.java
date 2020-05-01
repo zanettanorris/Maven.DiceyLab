@@ -35,11 +35,15 @@ public class Simulation {
             percent = calcPercent(bin.getBin(keySum), numberOfRolls);
             int rowOfStars;
 //            rowOfStars = 0b1;
-//TODO make the percent yield a decimal rather than a whole number. 0.17 instead of 17.
-//            int roundPercent = Math.round(percent);
-//            float decimalPercent = (roundPercent/100);
+//Done: make the percent yield a decimal rather than a whole number. 0.17 instead of 17.
+            int roundPercent = Math.round(percent);
+            float decimalPercent = (roundPercent/100.00f);
+//            System.out.println((String.format("%2d",keySum)) + "  :   " + (String.format("%6d",
+//                    Math.round(bin.getBin(keySum)))) + " :  " + (String.format("%2d", Math.round(percent))) +
+//                    " " +
+//                    " " + printStars(Math.round(percent)));
             System.out.println((String.format("%2d",keySum)) + "  :   " + (String.format("%6d",
-                    Math.round(bin.getBin(keySum)))) + " :  " + (String.format("%2d", Math.round(percent))) +
+                    Math.round(bin.getBin(keySum)))) + " :  " + (( decimalPercent)) +
                     " " +
                     " " + printStars(Math.round(percent)));
         }
